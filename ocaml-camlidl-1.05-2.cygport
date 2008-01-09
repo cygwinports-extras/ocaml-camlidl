@@ -1,0 +1,34 @@
+ORIG_PN="camlidl"
+
+inherit ocaml
+
+DESCRIPTION="OCaml IDL preprocessor"
+HOMEPAGE="http://caml.inria.fr/pub/old_caml_site/camlidl/"
+SRC_URI="http://caml.inria.fr/pub/old_caml_site/distrib/bazar-ocaml/${ORIG_PN}-${PV}.tar.gz"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	ln -sf Makefile.unix config/Makefile
+	cygmake -j1 \
+		BINDIR=/usr/bin \
+		OCAMLLIB=${OCAML_LIBDIR} \
+		CPP=/usr/bin/cpp \
+		EXE=.exe
+}
+
+src_test() {
+	cd ${B}/tests
+	cygmake -j1
+}
+
+src_install() {
+	cd ${B}
+	dodir /usr/bin ${OCAML_INCLUDEDIR} ${OCAML_STUBDIR}
+	cyginstall \
+		BINDIR=${D}/usr/bin \
+		OCAMLLIB=${D}${OCAML_LIBDIR}
+
+	insinto ${OCAML_LIBDIR}
+	doins lib/com.mli
+}
