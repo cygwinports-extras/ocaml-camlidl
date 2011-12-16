@@ -1,5 +1,5 @@
 category: OCaml
-requires: ocaml
+requires: ocaml-base
 sdesc: "OCaml IDL preprocessor"
 ldesc: "CamlIDL is a stub code generator and COM binding for Objective Caml."
 
