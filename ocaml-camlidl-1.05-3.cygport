@@ -31,4 +31,15 @@ src_install() {
 
 	insinto ${OCAML_LIBDIR}
 	doins lib/com.mli
+
+	dodir ${OCAML_LIBDIR}/camlidl
+	cat > ${D}${OCAML_LIBDIR}/camlidl/META <<_EOF
+name = "camlidl"
+version = "${PV}"
+description = "${DESCRIPTION}"
+requires = ""
+directory = "^"
+archive(byte) = "com.cma"
+archive(native) = "com.cmxa"
+_EOF
 }
