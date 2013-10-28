@@ -2,7 +2,7 @@ inherit ocaml
 
 NAME="ocaml-camlidl"
 VERSION=1.05
-RELEASE=3
+RELEASE=4
 CATEGORY="Devel"
 SUMMARY="OCaml IDL preprocessor"
 DESCRIPTION="CamlIDL is a stub code generator and COM binding for OCaml."
