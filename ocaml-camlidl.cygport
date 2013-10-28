@@ -1,10 +1,15 @@
-ORIG_PN="camlidl"
-
 inherit ocaml
 
-DESCRIPTION="OCaml IDL preprocessor"
+NAME="ocaml-camlidl"
+VERSION=1.05
+RELEASE=3
+CATEGORY="Devel"
+SUMMARY="OCaml IDL preprocessor"
+DESCRIPTION="CamlIDL is a stub code generator and COM binding for OCaml."
+REQUIRES="ocaml-base"
 HOMEPAGE="http://caml.inria.fr/pub/old_caml_site/camlidl/"
-SRC_URI="http://caml.inria.fr/pub/old_caml_site/distrib/bazar-ocaml/${ORIG_PN}-${PV}.tar.gz"
+SRC_URI="http://caml.inria.fr/pub/old_caml_site/distrib/bazar-ocaml/camlidl-${VERSION}.tar.gz"
+SRC_DIR="camlidl-${VERSION}"
 
 src_compile() {
 	lndirs
@@ -35,8 +40,8 @@ src_install() {
 	dodir ${OCAML_LIBDIR}/camlidl
 	cat > ${D}${OCAML_LIBDIR}/camlidl/META <<_EOF
 name = "camlidl"
-version = "${PV}"
-description = "${DESCRIPTION}"
+version = "${VERSION}"
+description = "${SUMMARY}"
 requires = ""
 directory = "^"
 archive(byte) = "com.cma"
